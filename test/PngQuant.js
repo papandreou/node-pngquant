@@ -50,4 +50,18 @@ describe('PngQuant', function () {
             pngQuant.resume();
         }, 1000);
     });
+
+    it('should emit an error if an invalid image is processed', function (done) {
+        var pngQuant = new PngQuant();
+
+        pngQuant.on('error', function (err) {
+            done();
+        }).on('data', function (chunk) {
+            done(new Error('PngQuant emitted data when an error was expected'));
+        }).on('end', function (chunk) {
+            done(new Error('PngQuant emitted end when an error was expected'));
+        });
+
+        pngQuant.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    });
 });
