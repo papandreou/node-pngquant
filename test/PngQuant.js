@@ -1,0 +1,53 @@
+var expect = require('expect.js'),
+    PngQuant = require('../lib/PngQuant'),
+    Path = require('path'),
+    fs = require('fs');
+
+describe('PngQuant', function () {
+    it('should produce a smaller file', function (done) {
+        var pngQuant = new PngQuant([128]),
+            chunks = [];
+        fs.createReadStream(Path.resolve(__dirname, 'purplealpha24bit.png'))
+            .pipe(pngQuant)
+            .on('data', function (chunk) {
+                chunks.push(chunk);
+            })
+            .on('end', function () {
+                var resultPngBuffer = Buffer.concat(chunks);
+                expect(resultPngBuffer.length).to.be.greaterThan(0);
+                expect(resultPngBuffer.length).to.be.lessThan(8285);
+                done();
+            })
+            .on('error', done);
+    });
+
+    it('should not emit data events while paused', function (done) {
+        var pngQuant = new PngQuant();
+
+        function fail() {
+            done(new Error('PngQuant emitted data while it was paused!'));
+        }
+        pngQuant.pause();
+        pngQuant.on('data', fail).on('error', done);
+
+        fs.createReadStream(Path.resolve(__dirname, 'purplealpha24bit.png')).pipe(pngQuant);
+
+        setTimeout(function () {
+            pngQuant.removeListener('data', fail);
+            var chunks = [];
+
+            pngQuant
+                .on('data', function (chunk) {
+                    chunks.push(chunk);
+                })
+                .on('end', function () {
+                    var resultPngBuffer = Buffer.concat(chunks);
+                    expect(resultPngBuffer.length).to.be.greaterThan(0);
+                    expect(resultPngBuffer.length).to.be.lessThan(8285);
+                    done();
+                });
+
+            pngQuant.resume();
+        }, 1000);
+    });
+});
