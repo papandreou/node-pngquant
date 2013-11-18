@@ -1,36 +1,36 @@
 {
-    "name": "pngquant",
-    "version": "0.0.3",
-    "description": "The pngquant utility as a readable/writable stream",
-    "main": "lib/PngQuant.js",
-    "directories": {
-        "test": "test"
-    },
-    "dependencies": {
-        "pngquant-bin": "=0.1.2"
-    },
-    "devDependencies": {
-        "mocha": "=1.7.3",
-        "unexpected": "=1.0.11"
-    },
-    "scripts": {
-        "prepublish": "mocha",
-        "test": "mocha"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/papandreou/node-pngquant.git"
-    },
-    "keywords": [
-        "pngquant",
-        "png",
-        "image",
-        "optimization",
-        "stream",
-        "filter",
-        "read/write",
-        "duplex"
-    ],
-    "author": "Andreas Lind Petersen <andreas@one.com>",
-    "license": "BSD"
+  "name": "pngquant",
+  "version": "0.0.3",
+  "description": "The pngquant utility as a readable/writable stream",
+  "main": "lib/PngQuant.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "pngquant-bin": "=0.1.2"
+  },
+  "devDependencies": {
+    "mocha": "=1.7.3",
+    "unexpected": "=1.0.11"
+  },
+  "scripts": {
+    "prepublish": "mocha",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/papandreou/node-pngquant.git"
+  },
+  "keywords": [
+    "pngquant",
+    "png",
+    "image",
+    "optimization",
+    "stream",
+    "filter",
+    "read/write",
+    "duplex"
+  ],
+  "author": "Andreas Lind Petersen <andreas@one.com>",
+  "license": "BSD"
 }
