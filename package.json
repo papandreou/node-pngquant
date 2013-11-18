@@ -6,7 +6,9 @@
     "directories": {
         "test": "test"
     },
-    "dependencies": {},
+    "dependencies": {
+        "pngquant-bin": "=0.1.2"
+    },
     "devDependencies": {
         "mocha": "=1.7.3",
         "expect.js": "=0.2.0"
