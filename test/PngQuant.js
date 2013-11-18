@@ -1,4 +1,4 @@
-var expect = require('expect.js'),
+var expect = require('unexpected'),
     PngQuant = require('../lib/PngQuant'),
     Path = require('path'),
     fs = require('fs');
@@ -14,8 +14,8 @@ describe('PngQuant', function () {
             })
             .on('end', function () {
                 var resultPngBuffer = Buffer.concat(chunks);
-                expect(resultPngBuffer.length).to.be.greaterThan(0);
-                expect(resultPngBuffer.length).to.be.lessThan(8285);
+                expect(resultPngBuffer.length, 'to be greater than', 0);
+                expect(resultPngBuffer.length, 'to be less than', 8285);
                 done();
             })
             .on('error', done);
@@ -42,8 +42,8 @@ describe('PngQuant', function () {
                 })
                 .on('end', function () {
                     var resultPngBuffer = Buffer.concat(chunks);
-                    expect(resultPngBuffer.length).to.be.greaterThan(0);
-                    expect(resultPngBuffer.length).to.be.lessThan(8285);
+                    expect(resultPngBuffer.length, 'to be greater than', 0);
+                    expect(resultPngBuffer.length, 'to be less than', 8285);
                     done();
                 });
 
