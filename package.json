@@ -6,7 +6,7 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
+  "optionalDependencies": {
     "pngquant-bin": "=0.1.7"
   },
   "devDependencies": {
