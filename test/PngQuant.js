@@ -64,4 +64,25 @@ describe('PngQuant', function () {
 
         pngQuant.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
     });
+
+    it('should emit a single error if an invalid command line is specified', function (done) {
+        var pngQuant = new PngQuant(['--blabla']),
+            seenError = false;
+
+        pngQuant.on('error', function (err) {
+            expect(pngQuant.commandLine, 'to match', /pngquant --blabla/);
+            if (seenError) {
+                done(new Error('More than one error event was emitted'));
+            } else {
+                seenError = true;
+                setTimeout(done, 100);
+            }
+        }).on('data', function (chunk) {
+            done(new Error('PngQuant emitted data when an error was expected'));
+        }).on('end', function (chunk) {
+            done(new Error('PngQuant emitted end when an error was expected'));
+        });
+
+        pngQuant.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    });
 });
