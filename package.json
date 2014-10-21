@@ -7,7 +7,7 @@
     "test": "test"
   },
   "optionalDependencies": {
-    "pngquant-bin": "=0.1.7"
+    "pngquant-bin": "=2.0.0"
   },
   "devDependencies": {
     "mocha": "=1.7.3",
