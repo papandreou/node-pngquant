@@ -1,6 +1,11 @@
 node-pngquant
 =============
 
+[![NPM version](https://badge.fury.io/js/pngquant.svg)](http://badge.fury.io/js/pngquant)
+[![Build Status](https://travis-ci.org/papandreou/pngquant.svg?branch=master)](https://travis-ci.org/papandreou/pngquant)
+[![Coverage Status](https://coveralls.io/repos/papandreou/pngquant/badge.svg)](https://coveralls.io/r/papandreou/pngquant)
+[![Dependency Status](https://david-dm.org/papandreou/pngquant.svg)](https://david-dm.org/papandreou/pngquant)
+
 The pngquant command line utility as a readable/writable stream.
 
 The constructor optionally takes an array of command line options for
