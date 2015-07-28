@@ -14,7 +14,8 @@
     "istanbul": "0.3.15",
     "jshint": "2.8.0",
     "mocha": "2.2.5",
-    "unexpected": "9.4.0"
+    "unexpected": "9.4.0",
+    "unexpected-stream": "1.2.0"
   },
   "scripts": {
     "lint": "jshint .",

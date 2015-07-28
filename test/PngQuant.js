@@ -1,25 +1,20 @@
 /*global describe, it, setTimeout, __dirname*/
-var expect = require('unexpected'),
+var expect = require('unexpected').clone().use(require('unexpected-stream')),
     PngQuant = require('../lib/PngQuant'),
     Path = require('path'),
     fs = require('fs');
 
 describe('PngQuant', function () {
-    it('should produce a smaller file', function (done) {
-        var pngQuant = new PngQuant([128]),
-            chunks = [];
-        fs.createReadStream(Path.resolve(__dirname, 'purplealpha24bit.png'))
-            .pipe(pngQuant)
-            .on('data', function (chunk) {
-                chunks.push(chunk);
-            })
-            .on('end', function () {
-                var resultPngBuffer = Buffer.concat(chunks);
-                expect(resultPngBuffer.length, 'to be greater than', 0);
-                expect(resultPngBuffer.length, 'to be less than', 8285);
-                done();
-            })
-            .on('error', done);
+    it('should produce a smaller file', function () {
+        return expect(
+            fs.createReadStream(Path.resolve(__dirname, 'purplealpha24bit.png')),
+            'when piped through',
+            new PngQuant([128]),
+            'to yield output satisfying',
+            function (resultPngBuffer) {
+                expect(resultPngBuffer.length, 'to be within', 0, 8285);
+            }
+        );
     });
 
     it('should not emit data events while paused', function (done) {
@@ -43,8 +38,7 @@ describe('PngQuant', function () {
                 })
                 .on('end', function () {
                     var resultPngBuffer = Buffer.concat(chunks);
-                    expect(resultPngBuffer.length, 'to be greater than', 0);
-                    expect(resultPngBuffer.length, 'to be less than', 8285);
+                    expect(resultPngBuffer.length, 'to be within', 0, 8285);
                     done();
                 });
 
