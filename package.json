@@ -38,5 +38,9 @@
     "duplex"
   ],
   "author": "Andreas Lind <andreas@one.com>",
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "memoizeasync": "0.8.0",
+    "which": "1.1.2"
+  }
 }
