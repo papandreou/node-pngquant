@@ -2,7 +2,12 @@
 var expect = require('unexpected').clone().use(require('unexpected-stream')),
     PngQuant = require('../lib/PngQuant'),
     Path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    semver = require('semver');
+
+it.skipIf = function (condition) {
+    (condition ? it.skip : it).apply(it, Array.prototype.slice.call(arguments, 1));
+};
 
 describe('PngQuant', function () {
     it('should produce a smaller file', function () {
@@ -17,7 +22,7 @@ describe('PngQuant', function () {
         );
     });
 
-    it('should not emit data events while paused', function (done) {
+    it.skipIf(semver.satisfies(process.version.replace(/^v/, ''), '>=0.12.0'), 'should not emit data events while paused', function (done) {
         var pngQuant = new PngQuant();
 
         function fail() {
