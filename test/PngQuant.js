@@ -1,9 +1,12 @@
 /*global describe, it, setTimeout, __dirname*/
-var expect = require('unexpected').clone().use(require('unexpected-stream')),
-    PngQuant = require('../lib/PngQuant'),
-    Path = require('path'),
-    fs = require('fs'),
-    semver = require('semver');
+var expect = require('unexpected').clone()
+    .use(require('unexpected-stream'))
+    .use(require('unexpected-sinon'));
+var sinon = require('sinon');
+var PngQuant = require('../lib/PngQuant');
+var pathModule = require('path');
+var fs = require('fs');
+var semver = require('semver');
 
 it.skipIf = function (condition) {
     (condition ? it.skip : it).apply(it, Array.prototype.slice.call(arguments, 1));
@@ -12,7 +15,7 @@ it.skipIf = function (condition) {
 describe('PngQuant', function () {
     it('should produce a smaller file', function () {
         return expect(
-            fs.createReadStream(Path.resolve(__dirname, 'purplealpha24bit.png')),
+            fs.createReadStream(pathModule.resolve(__dirname, 'purplealpha24bit.png')),
             'when piped through',
             new PngQuant([128]),
             'to yield output satisfying',
@@ -31,7 +34,7 @@ describe('PngQuant', function () {
         pngQuant.pause();
         pngQuant.on('data', fail).on('error', done);
 
-        fs.createReadStream(Path.resolve(__dirname, 'purplealpha24bit.png')).pipe(pngQuant);
+        fs.createReadStream(pathModule.resolve(__dirname, 'purplealpha24bit.png')).pipe(pngQuant);
 
         setTimeout(function () {
             pngQuant.removeListener('data', fail);
@@ -84,5 +87,33 @@ describe('PngQuant', function () {
         });
 
         pngQuant.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    });
+
+    describe('#destroy', function () {
+        it('should kill the underlying child process', function () {
+            var pngQuant = new PngQuant(['-grayscale']);
+
+            return expect.promise(function (run) {
+                pngQuant.write('JFIF');
+                setTimeout(run(function waitForPngQuantProcess() {
+                    var pngQuantProcess = pngQuant.pngQuantProcess;
+                    if (pngQuant.pngQuantProcess) {
+                        sinon.spy(pngQuantProcess, 'kill');
+                        pngQuant.destroy();
+                        sinon.spy(pngQuant, 'emit');
+                        expect(pngQuantProcess.kill, 'to have calls satisfying', function () {
+                            pngQuantProcess.kill();
+                        });
+                        expect(pngQuant.pngQuantProcess, 'to be falsy');
+                        expect(pngQuant.bufferedChunks, 'to be falsy');
+                        setTimeout(run(function () {
+                            expect(pngQuant.emit, 'to have calls satisfying', []);
+                        }), 10);
+                    } else {
+                        setTimeout(run(waitForPngQuantProcess), 0);
+                    }
+                }), 0);
+            });
+        });
     });
 });
