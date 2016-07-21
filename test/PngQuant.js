@@ -150,7 +150,7 @@ describe('PngQuant', function () {
                 'when piped through',
                 new PngQuant([128]),
                 'to error with',
-                /\/foo\/bar ENOENT/
+                /\/foo\/bar ENOENT|write EPIPE/
             );
         });
     });
