@@ -1,4 +1,4 @@
-/*global describe, it, setTimeout, __dirname*/
+/*global describe, it, beforeEach, afterEach, setTimeout, __dirname*/
 var expect = require('unexpected').clone()
     .use(require('unexpected-stream'))
     .use(require('unexpected-sinon'));
@@ -114,6 +114,44 @@ describe('PngQuant', function () {
                     }
                 }), 0);
             });
+        });
+    });
+
+    expect.addAssertion('<Stream> to error', function (expect, subject) {
+        return expect.promise(function (run) {
+            subject.once('error', run(function (err) {
+                return err;
+            }));
+        });
+    });
+
+    expect.addAssertion('<Stream> to error with <any>', function (expect, subject, value) {
+        expect.errorMode = 'nested';
+        return expect(subject, 'to error').then(function (err) {
+            return expect(err, 'to satisfy', value);
+        });
+    });
+
+    describe('with an overridden #binaryPath', function () {
+        var childProcess = require('child_process');
+        beforeEach(function () {
+            PngQuant.getBinaryPath.purgeAll(); // Make sure we don't get a cached value from one of the other tests
+            PngQuant.binaryPath = '/foo/bar';
+            sinon.spy(childProcess, 'spawn');
+        });
+        afterEach(function () {
+            PngQuant.binaryPath = null;
+            childProcess.spawn.restore();
+        });
+
+        it('should try launching that binary instead of the one found on the system', function () {
+            return expect(
+                fs.createReadStream(pathModule.resolve(__dirname, 'purplealpha24bit.png')),
+                'when piped through',
+                new PngQuant([128]),
+                'to error with',
+                /\/foo\/bar ENOENT/
+            );
         });
     });
 });
