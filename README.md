@@ -13,7 +13,7 @@ the `pngquant` binary (defaults to `[256]`):
 
 ```javascript
 var PngQuant = require('pngquant'),
-    myPngQuanter = new PngQuant([192, '-ordered']);
+    myPngQuanter = new PngQuant([192, '--quality', '60-80', '--nofs', '-']);
 
 sourceStream.pipe(myPngQuanter).pipe(destinationStream);
 ```
