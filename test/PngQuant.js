@@ -13,11 +13,12 @@ it.skipIf = function (condition) {
 };
 
 describe('PngQuant', function () {
-    it('should produce a smaller file', function () {
+
+    it('should produce a smaller file with lower quality and ordered dithering', function () {
         return expect(
             fs.createReadStream(pathModule.resolve(__dirname, 'purplealpha24bit.png')),
             'when piped through',
-            new PngQuant([128]),
+            new PngQuant([128, '--quality', '60-80', '--nofs']),
             'to yield output satisfying',
             function (resultPngBuffer) {
                 expect(resultPngBuffer.length, 'to be within', 0, 8285);
