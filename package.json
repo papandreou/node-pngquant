@@ -40,7 +40,7 @@
     "read/write",
     "duplex"
   ],
-  "author": "Andreas Lind <andreas@one.com>",
+  "author": "Andreas Lind <andreaslindpetersen@gmail.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
     "memoizeasync": "1.0.0",
