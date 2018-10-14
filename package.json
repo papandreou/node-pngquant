@@ -18,7 +18,7 @@
     "sinon": "^2.1.0",
     "unexpected": "^10.27.0",
     "unexpected-sinon": "^10.7.1",
-    "unexpected-stream": "^2.1.0"
+    "unexpected-stream": "^3.0.0"
   },
   "scripts": {
     "lint": "jshint .",
