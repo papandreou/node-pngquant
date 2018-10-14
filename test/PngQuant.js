@@ -17,17 +17,18 @@ it.skipIf = function(condition) {
 };
 
 describe('PngQuant', () => {
-  it('should produce a smaller file with lower quality and ordered dithering', () => expect(
-    fs.createReadStream(
-      pathModule.resolve(__dirname, 'purplealpha24bit.png')
-    ),
-    'when piped through',
-    new PngQuant([128, '--quality', '60-80', '--nofs']),
-    'to yield output satisfying',
-    resultPngBuffer => {
-      expect(resultPngBuffer.length, 'to be within', 0, 8285);
-    }
-  ));
+  it('should produce a smaller file with lower quality and ordered dithering', () =>
+    expect(
+      fs.createReadStream(
+        pathModule.resolve(__dirname, 'purplealpha24bit.png')
+      ),
+      'when piped through',
+      new PngQuant([128, '--quality', '60-80', '--nofs']),
+      'to yield output satisfying',
+      resultPngBuffer => {
+        expect(resultPngBuffer.length, 'to be within', 0, 8285);
+      }
+    ));
 
   it.skipIf(
     semver.satisfies(process.version.replace(/^v/, ''), '>=0.12.0'),
@@ -119,13 +120,9 @@ describe('PngQuant', () => {
               sinon.spy(pngQuantProcess, 'kill');
               pngQuant.destroy();
               sinon.spy(pngQuant, 'emit');
-              expect(
-                pngQuantProcess.kill,
-                'to have calls satisfying',
-                () => {
-                  pngQuantProcess.kill();
-                }
-              );
+              expect(pngQuantProcess.kill, 'to have calls satisfying', () => {
+                pngQuantProcess.kill();
+              });
               expect(pngQuant.pngQuantProcess, 'to be falsy');
               expect(pngQuant.bufferedChunks, 'to be falsy');
               setTimeout(
@@ -144,17 +141,21 @@ describe('PngQuant', () => {
     });
   });
 
-  expect.addAssertion('<Stream> to error', (expect, subject) => expect.promise(run => {
-    subject.once(
-      'error',
-      run(err => err)
-    );
-  }));
+  expect.addAssertion('<Stream> to error', (expect, subject) =>
+    expect.promise(run => {
+      subject.once('error', run(err => err));
+    })
+  );
 
-  expect.addAssertion('<Stream> to error with <any>', (expect, subject, value) => {
-    expect.errorMode = 'nested';
-    return expect(subject, 'to error').then(err => expect(err, 'to satisfy', value));
-  });
+  expect.addAssertion(
+    '<Stream> to error with <any>',
+    (expect, subject, value) => {
+      expect.errorMode = 'nested';
+      return expect(subject, 'to error').then(err =>
+        expect(err, 'to satisfy', value)
+      );
+    }
+  );
 
   describe('with an overridden #binaryPath', () => {
     const childProcess = require('child_process');
@@ -168,14 +169,15 @@ describe('PngQuant', () => {
       childProcess.spawn.restore();
     });
 
-    it('should try launching that binary instead of the one found on the system', () => expect(
-      fs.createReadStream(
-        pathModule.resolve(__dirname, 'purplealpha24bit.png')
-      ),
-      'when piped through',
-      new PngQuant([128]),
-      'to error with',
-      /\/foo\/bar ENOENT|write EPIPE/
-    ));
+    it('should try launching that binary instead of the one found on the system', () =>
+      expect(
+        fs.createReadStream(
+          pathModule.resolve(__dirname, 'purplealpha24bit.png')
+        ),
+        'when piped through',
+        new PngQuant([128]),
+        'to error with',
+        /\/foo\/bar ENOENT|write EPIPE/
+      ));
   });
 });
