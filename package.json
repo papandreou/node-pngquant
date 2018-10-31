@@ -26,7 +26,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "mocha",
-    "travis": "npm test && npm run lint && npm run coverage && (<coverage/lcov.info coveralls || true)",
+    "ci": "npm test && npm run lint && npm run coverage && (<coverage/lcov.info coveralls || true)",
     "coverage": "NODE_ENV=development istanbul cover _mocha -- --reporter dot && echo google-chrome coverage/lcov-report/index.html"
   },
   "repository": {
