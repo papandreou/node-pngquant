@@ -79,7 +79,7 @@ describe('PngQuant', () => {
         done(new Error('PngQuant emitted end when an error was expected'));
       });
 
-    pngQuant.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    pngQuant.end(Buffer.from('qwvopeqwovkqvwiejvq', 'utf-8'));
   });
 
   it('should emit a single error if an invalid command line is specified', done => {
@@ -104,7 +104,7 @@ describe('PngQuant', () => {
         done(new Error('PngQuant emitted end when an error was expected'));
       });
 
-    pngQuant.end(new Buffer('qwvopeqwovkqvwiejvq', 'utf-8'));
+    pngQuant.end(Buffer.from('qwvopeqwovkqvwiejvq', 'utf-8'));
   });
 
   describe('#destroy', () => {
