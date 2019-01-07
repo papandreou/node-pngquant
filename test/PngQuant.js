@@ -25,9 +25,9 @@ describe('PngQuant', () => {
       'when piped through',
       new PngQuant([128, '--quality', '60-80', '--nofs']),
       'to yield output satisfying',
-      resultPngBuffer => {
+      expect.it(resultPngBuffer => {
         expect(resultPngBuffer.length, 'to be within', 0, 8285);
-      }
+      })
     ));
 
   it.skipIf(
