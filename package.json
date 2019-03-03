@@ -1,6 +1,6 @@
 {
   "name": "pngquant",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The pngquant utility as a readable/writable stream",
   "main": "lib/PngQuant.js",
   "directories": {
