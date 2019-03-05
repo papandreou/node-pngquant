@@ -69,7 +69,7 @@ describe('PngQuant', () => {
     const pngQuant = new PngQuant();
 
     pngQuant
-      .on('error', err => {
+      .on('error', () => {
         done();
       })
       .on('data', chunk => {
@@ -88,7 +88,7 @@ describe('PngQuant', () => {
     let seenError = false;
 
     pngQuant
-      .on('error', err => {
+      .on('error', () => {
         expect(pngQuant.commandLine, 'to match', /pngquant --blabla/);
         if (seenError) {
           done(new Error('More than one error event was emitted'));
