@@ -27,7 +27,7 @@
     "sinon": "^7.0.0",
     "unexpected": "^11.0.0",
     "unexpected-sinon": "^10.7.1",
-    "unexpected-stream": "^3.0.0"
+    "unexpected-stream": "^4.0.0"
   },
   "scripts": {
     "lint": "eslint . && prettier --check '**/*.js'",
