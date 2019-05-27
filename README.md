@@ -39,7 +39,7 @@ http.createServer(function (req, res) {
 Installation
 ------------
 
-Make sure you have node.js and npm installed, and that the `pngquant` binary is in your PATH, then run:
+Make sure you have node.js and npm installed, and that the `pngquant` binary is in your PATH, or set environment variable PNGQUANT_PATH, then run:
 
     npm install pngquant
 
