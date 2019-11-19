@@ -53,7 +53,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "memoizeasync": "1.1.0",
-    "which": "2.0.1"
+    "which": "2.0.2"
   },
   "nyc": {
     "include": [
