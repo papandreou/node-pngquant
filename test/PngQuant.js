@@ -142,7 +142,10 @@ describe('PngQuant', () => {
 
   expect.addAssertion('<Stream> to error', (expect, subject) =>
     expect.promise(run => {
-      subject.once('error', run(err => err));
+      subject.once(
+        'error',
+        run(err => err)
+      );
     })
   );
 
