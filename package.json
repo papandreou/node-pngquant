@@ -21,7 +21,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^6.0.0",
-    "nyc": "^14.0.0",
+    "nyc": "^15.0.0",
     "prettier": "~1.19.1",
     "semver": "^7.0.0",
     "sinon": "^7.0.0",
