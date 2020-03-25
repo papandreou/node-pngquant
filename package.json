@@ -22,7 +22,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^7.0.0",
     "nyc": "^15.0.0",
-    "prettier": "~1.19.1",
+    "prettier": "~2.0.2",
     "semver": "^7.0.0",
     "sinon": "^9.0.0",
     "unexpected": "^11.0.0",
