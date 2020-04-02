@@ -8,7 +8,7 @@ const pathModule = require('path');
 const fs = require('fs');
 const semver = require('semver');
 
-it.skipIf = function(condition) {
+it.skipIf = function (condition) {
   (condition ? it.skip : it).apply(
     it,
     Array.prototype.slice.call(arguments, 1)
@@ -24,7 +24,7 @@ describe('PngQuant', () => {
       'when piped through',
       new PngQuant([128, '--quality', '60-80', '--nofs']),
       'to yield output satisfying',
-      expect.it(resultPngBuffer => {
+      expect.it((resultPngBuffer) => {
         expect(resultPngBuffer.length, 'to be within', 0, 8285);
       })
     ));
@@ -32,7 +32,7 @@ describe('PngQuant', () => {
   it.skipIf(
     semver.satisfies(process.version.replace(/^v/, ''), '>=0.12.0'),
     'should not emit data events while paused',
-    done => {
+    (done) => {
       const pngQuant = new PngQuant();
 
       function fail() {
@@ -50,7 +50,7 @@ describe('PngQuant', () => {
         const chunks = [];
 
         pngQuant
-          .on('data', chunk => {
+          .on('data', (chunk) => {
             chunks.push(chunk);
           })
           .on('end', () => {
@@ -64,24 +64,24 @@ describe('PngQuant', () => {
     }
   );
 
-  it('should emit an error if an invalid image is processed', done => {
+  it('should emit an error if an invalid image is processed', (done) => {
     const pngQuant = new PngQuant();
 
     pngQuant
       .on('error', () => {
         done();
       })
-      .on('data', chunk => {
+      .on('data', (chunk) => {
         done(new Error('PngQuant emitted data when an error was expected'));
       })
-      .on('end', chunk => {
+      .on('end', (chunk) => {
         done(new Error('PngQuant emitted end when an error was expected'));
       });
 
     pngQuant.end(Buffer.from('qwvopeqwovkqvwiejvq', 'utf-8'));
   });
 
-  it('should emit a single error if an invalid command line is specified', done => {
+  it('should emit a single error if an invalid command line is specified', (done) => {
     const pngQuant = new PngQuant(['--blabla']);
 
     let seenError = false;
@@ -96,10 +96,10 @@ describe('PngQuant', () => {
           setTimeout(done, 100);
         }
       })
-      .on('data', chunk => {
+      .on('data', (chunk) => {
         done(new Error('PngQuant emitted data when an error was expected'));
       })
-      .on('end', chunk => {
+      .on('end', (chunk) => {
         done(new Error('PngQuant emitted end when an error was expected'));
       });
 
@@ -110,7 +110,7 @@ describe('PngQuant', () => {
     it('should kill the underlying child process', () => {
       const pngQuant = new PngQuant(['-grayscale']);
 
-      return expect.promise(run => {
+      return expect.promise((run) => {
         pngQuant.write('JFIF');
         setTimeout(
           run(function waitForPngQuantProcess() {
@@ -141,10 +141,10 @@ describe('PngQuant', () => {
   });
 
   expect.addAssertion('<Stream> to error', (expect, subject) =>
-    expect.promise(run => {
+    expect.promise((run) => {
       subject.once(
         'error',
-        run(err => err)
+        run((err) => err)
       );
     })
   );
@@ -153,7 +153,7 @@ describe('PngQuant', () => {
     '<Stream> to error with <any>',
     (expect, subject, value) => {
       expect.errorMode = 'nested';
-      return expect(subject, 'to error').then(err =>
+      return expect(subject, 'to error').then((err) =>
         expect(err, 'to satisfy', value)
       );
     }
