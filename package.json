@@ -32,8 +32,8 @@
   "scripts": {
     "lint": "eslint . && prettier --check '**/*.{js,md}'",
     "test": "mocha",
-    "ci": "npm test && npm run lint && npm run coverage",
-    "coverage": "NODE_ENV=development nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
+    "test:ci": "npm run coverage",
+    "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
