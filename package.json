@@ -26,7 +26,7 @@
     "semver": "^7.0.0",
     "sinon": "^9.0.0",
     "unexpected": "^11.0.0",
-    "unexpected-sinon": "^10.7.1",
+    "unexpected-sinon": "^11.0.0",
     "unexpected-stream": "^4.0.0"
   },
   "scripts": {
