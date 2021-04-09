@@ -41,7 +41,13 @@ http
 
 Make sure you have node.js and npm installed, and that the `pngquant` binary is in your PATH, then run:
 
-    npm install pngquant
+```
+npm install pngquant
+```
+
+# Releases
+
+See the [changelog](CHANGELOG.md).
 
 ## License
 

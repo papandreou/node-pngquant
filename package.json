@@ -22,6 +22,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^8.3.0",
     "nyc": "^15.0.0",
+    "offline-github-changelog": "^2.3.0",
     "prettier": "~2.2.0",
     "semver": "^7.0.0",
     "sinon": "^10.0.0",
@@ -33,7 +34,8 @@
     "lint": "eslint . && prettier --check '**/*.{js,md}'",
     "test": "mocha",
     "test:ci": "npm run coverage",
-    "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html"
+    "coverage": "nyc --reporter=lcov --reporter=text --all -- npm test && echo google-chrome coverage/lcov-report/index.html",
+    "preversion": "offline-github-changelog --next=${npm_package_version} > CHANGELOG.md && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
