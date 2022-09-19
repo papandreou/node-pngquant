@@ -1,12 +1,16 @@
-const expect = require('unexpected')
-  .clone()
-  .use(require('unexpected-stream'))
-  .use(require('unexpected-sinon'));
-const sinon = require('sinon');
-const PngQuant = require('../lib/PngQuant');
-const pathModule = require('path');
-const fs = require('fs');
-const semver = require('semver');
+import unexpected from 'unexpected';
+import unexpectedStream from 'unexpected-stream';
+import unexpectedSinon from 'unexpected-sinon';
+import sinon from 'sinon';
+import pathModule from 'path';
+import fs from 'fs';
+import semver from 'semver';
+import childProcess from 'child_process';
+import * as url from 'url';
+import PngQuant from '../lib/PngQuant.js';
+
+const expect = unexpected.clone().use(unexpectedStream).use(unexpectedSinon);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 it.skipIf = function (condition) {
   (condition ? it.skip : it).apply(
@@ -38,6 +42,7 @@ describe('PngQuant', () => {
       function fail() {
         done(new Error('PngQuant emitted data while it was paused!'));
       }
+
       pngQuant.pause();
       pngQuant.on('data', fail).on('error', done);
 
@@ -160,7 +165,6 @@ describe('PngQuant', () => {
   );
 
   describe('with an overridden #binaryPath', () => {
-    const childProcess = require('child_process');
     beforeEach(() => {
       PngQuant.getBinaryPath.purgeAll(); // Make sure we don't get a cached value from one of the other tests
       PngQuant.binaryPath = '/foo/bar';
