@@ -5,16 +5,19 @@
   "description": "The pngquant utility as a readable/writable stream",
   "main": "dist/PngQuant.cjs",
   "module": "dist/PngQuant.mjs",
+  "types": "dist/PngQuant.d.ts",
   "directories": {
     "test": "test"
   },
   "files": [
+    "lib/*.d.ts",
     "dist"
   ],
   "optionalDependencies": {
     "pngquant-bin": "^5.0.2"
   },
   "devDependencies": {
+    "@types/node": "^18.7.18",
     "coveralls": "^3.0.2",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
