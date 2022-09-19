@@ -43,7 +43,7 @@
     // Legacy JS environments
 
     // If we should warn about reserved words as property names etc
-    "es3": true,
+    "es3": false,
 
 
     // ECMAScript 5
@@ -127,6 +127,7 @@
     // If es.next specific syntax should be allowed.
     "esnext": false,
 
+    "esversion": 6,
 
     // Style preferences
 
