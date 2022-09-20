@@ -1,3 +1,27 @@
+### v4.1.0 (2022-09-20)
+
+#### Pull requests
+
+- [#98](https://github.com/papandreou/node-pngquant/pull/98) esm ([ubermanu](mailto:manu@paca.happy-dev.fr))
+- [#94](https://github.com/papandreou/node-pngquant/pull/94) Upgrade eslint-plugin-mocha to version 10.0.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#91](https://github.com/papandreou/node-pngquant/pull/91) Upgrade prettier to version 2.5.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#86](https://github.com/papandreou/node-pngquant/pull/86) Upgrade sinon to version 12.0.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#81](https://github.com/papandreou/node-pngquant/pull/81) Upgrade prettier to version 2.4.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#84](https://github.com/papandreou/node-pngquant/pull/84) Upgrade eslint-plugin-promise to version 5.1.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#73](https://github.com/papandreou/node-pngquant/pull/73) Upgrade sinon to version 11.1.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#74](https://github.com/papandreou/node-pngquant/pull/74) Upgrade eslint-plugin-mocha to version 9.0.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#72](https://github.com/papandreou/node-pngquant/pull/72) Upgrade prettier to version 2.3.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#67](https://github.com/papandreou/node-pngquant/pull/67) Upgrade sinon to version 10.0.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+
+#### Commits to master
+
+- [Fix CHANGELOG generation in preversion script now that an npm env var changed](https://github.com/papandreou/node-pngquant/commit/69182b2460d237933fc12486c1af05065fd194f8) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [npm i --save-dev eslint-config-standard@latest eslint-plugin-n eslint-plugin-import@latest](https://github.com/papandreou/node-pngquant/commit/1ef43141f25557dd7a3bf7062434c1585a88fc3f) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [Update eslint-plugin-promise to version 6.0.0](https://github.com/papandreou/node-pngquant/commit/c52a4d3587b5d4145e59bcaa6b6ab7bce5cbf10c) ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [Replace Travis with Github Actions](https://github.com/papandreou/node-pngquant/commit/d06b7f437b02d85824308cafc4d7b5f375d9c290) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [Fix eslint-plugin-prettier usage](https://github.com/papandreou/node-pngquant/commit/54f67992b6577a2390f6c22e5108e4f7c677ad89) ([Andreas Lind](mailto:andreas.lind@workday.com))
+- [+2 more](https://github.com/papandreou/node-pngquant/compare/v4.0.0...v4.1.0)
+
 ### v4.0.0 (2021-02-13)
 
 #### Pull requests
