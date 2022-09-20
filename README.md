@@ -11,8 +11,9 @@ The constructor optionally takes an array of command line options for
 the `pngquant` binary (defaults to `[256]`):
 
 ```javascript
-var PngQuant = require('pngquant'),
-  myPngQuanter = new PngQuant([192, '--quality', '60-80', '--nofs', '-']);
+import PngQuant from 'pngquant';
+
+const myPngQuanter = new PngQuant([192, '--quality', '60-80', '--nofs', '-']);
 
 sourceStream.pipe(myPngQuanter).pipe(destinationStream);
 ```
@@ -21,8 +22,8 @@ PngQuant as a web service (sends back a png with the number of colors
 quantized to 128):
 
 ```javascript
-var PngQuant = require('pngquant'),
-  http = require('http');
+import PngQuant from 'pngquant';
+import http from 'http';
 
 http
   .createServer(function (req, res) {

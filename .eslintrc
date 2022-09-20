@@ -2,7 +2,8 @@
   "extends": ["standard", "prettier"],
   "plugins": ["import", "mocha"],
   "env": {
-    "mocha": true
+    "mocha": true,
+    "es6": true
   },
   "rules": {
     "prefer-template": "error",

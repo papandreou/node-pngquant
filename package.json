@@ -1,15 +1,23 @@
 {
   "name": "pngquant",
   "version": "4.0.0",
+  "type": "module",
   "description": "The pngquant utility as a readable/writable stream",
-  "main": "lib/PngQuant.js",
+  "main": "dist/PngQuant.cjs",
+  "module": "dist/PngQuant.mjs",
+  "types": "dist/PngQuant.d.ts",
   "directories": {
     "test": "test"
   },
+  "files": [
+    "lib/*.d.ts",
+    "dist"
+  ],
   "optionalDependencies": {
     "pngquant-bin": "^5.0.2"
   },
   "devDependencies": {
+    "@types/node": "^18.7.18",
     "coveralls": "^3.0.2",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
@@ -25,6 +33,7 @@
     "nyc": "^15.0.0",
     "offline-github-changelog": "^2.3.0",
     "prettier": "~2.5.0",
+    "rollup": "^2.79.0",
     "semver": "^7.0.0",
     "sinon": "^12.0.1",
     "unexpected": "^12.0.0",
@@ -32,6 +41,8 @@
     "unexpected-stream": "^5.0.0"
   },
   "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build",
     "lint": "eslint . && prettier --check '**/*.{js,md}'",
     "test": "mocha",
     "test:ci": "npm run coverage",
@@ -62,5 +73,12 @@
     "include": [
       "lib/**"
     ]
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/PngQuant.cjs",
+      "import": "./dist/PngQuant.mjs"
+    },
+    "./package.json": "./package.json"
   }
 }
