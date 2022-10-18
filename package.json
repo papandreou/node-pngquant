@@ -14,7 +14,7 @@
     "dist"
   ],
   "optionalDependencies": {
-    "pngquant-bin": "^5.0.2"
+    "pngquant-bin": "^8.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.7.18",
