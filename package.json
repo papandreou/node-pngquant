@@ -31,7 +31,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^8.3.0",
     "nyc": "^15.0.0",
-    "offline-github-changelog": "^2.3.0",
+    "offline-github-changelog": "^3.0.0",
     "prettier": "~2.5.0",
     "rollup": "^2.79.0",
     "semver": "^7.0.0",
