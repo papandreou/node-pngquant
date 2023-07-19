@@ -1,4 +1,11 @@
-const external = ['child_process', 'stream', 'util', 'which', 'memoizeasync', 'pngquant-bin'];
+const external = [
+  'child_process',
+  'stream',
+  'util',
+  'which',
+  'memoizeasync',
+  'pngquant-bin',
+];
 
 export default [
   {
