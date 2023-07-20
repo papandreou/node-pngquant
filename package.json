@@ -5,7 +5,7 @@
   "description": "The pngquant utility as a readable/writable stream",
   "main": "dist/PngQuant.cjs",
   "module": "dist/PngQuant.mjs",
-  "types": "dist/PngQuant.d.ts",
+  "types": "lib/PngQuant.d.ts",
   "directories": {
     "test": "test"
   },
@@ -77,7 +77,8 @@
   "exports": {
     ".": {
       "require": "./dist/PngQuant.cjs",
-      "import": "./dist/PngQuant.mjs"
+      "import": "./dist/PngQuant.mjs",
+      "types": "./lib/PngQuant.d.ts"
     },
     "./package.json": "./package.json"
   }

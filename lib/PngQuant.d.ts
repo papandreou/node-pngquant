@@ -1,17 +1,24 @@
-import type { Stream } from 'stream';
+import { ChildProcessWithoutNullStreams } from 'child_process';
+import { Stream } from 'stream';
 
-interface PngQuant extends Stream {
-  new (args?: Array<string | number>): PngQuant;
-  binaryPath: string;
-  getBinaryPath: (callback: (err: Error, binaryPath: string) => void) => void;
-  setBinaryPath: (binaryPath: string) => void;
-  _error: (err: Error) => void;
-  cleanUp: () => void;
-  destroy: () => void;
-  write: (chunk: Buffer) => void;
-  end: (chunk: Buffer) => void;
-  pause: () => void;
-  resume: () => void;
+declare class PngQuant extends Stream {
+  pngQuantArgs: string[];
+  writable: boolean;
+  readable: boolean;
+  hasEnded: boolean;
+  seenDataOnStdout: boolean;
+  pngQuantProcess: ChildProcessWithoutNullStreams | null;
+  bufferedChunks: Buffer[] | null;
+  constructor(pngQuantArgs?: string[]);
+  static getBinaryPath(cb: (err: Error | null, binaryPath?: string) => void): void;
+  static setBinaryPath(binaryPath: string): void;
+  private _error(err: Error): void;
+  private cleanUp(): void;
+  destroy(): void;
+  write(chunk: Buffer | string): void;
+  end(chunk?: Buffer | string): void;
+  pause(): void;
+  resume(): void;
 }
 
 export default PngQuant;

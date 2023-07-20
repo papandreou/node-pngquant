@@ -1,4 +1,11 @@
-const external = ['child_process', 'stream', 'util', 'which', 'memoizeasync'];
+const external = [
+  'child_process',
+  'stream',
+  'util',
+  'which',
+  'memoizeasync',
+  'pngquant-bin',
+];
 
 export default [
   {
@@ -6,6 +13,7 @@ export default [
     output: {
       file: 'dist/PngQuant.cjs',
       format: 'cjs',
+      exports: 'default',
     },
     external,
   },
