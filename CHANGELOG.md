@@ -1,8 +1,24 @@
+### v4.2.0 (2023-07-20)
+
+#### Pull requests
+
+- [#105](https://github.com/papandreou/node-pngquant/pull/105) ESM + types fix ([ubermanu](mailto:manu@paca.happy-dev.fr), [ubermanu](mailto:manu@paca.happy-dev.fr), [ubermanu](mailto:manu@paca.happy-dev.fr))
+- [#101](https://github.com/papandreou/node-pngquant/pull/101) update `mocha` to 10.1.0 ([Amri Toufali](mailto:amri@handsomemedia.com))
+
+#### Commits to master
+
+- [Update pngquant-bin to ^6.0.1](https://github.com/papandreou/node-pngquant/commit/9f09480b766a600390aecdb1792f8f6ea5f5285c) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [Revert "Bump pngquant-bin to ^8.0.1"](https://github.com/papandreou/node-pngquant/commit/88ee9ae7fccffbb7a2df340035385c20010ec1c5) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [Try ubuntu-latest](https://github.com/papandreou/node-pngquant/commit/f3e0faeeb1655b5e1c4d1c128308d9a8c57653ba) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [Try upgrading to a newer Ubuntu to unbreak CI with node.js 18](https://github.com/papandreou/node-pngquant/commit/b7a697378473a2bb945ad7f6370b3585fb37bdd9) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [Update offline-github-changelog to ^3.0.0](https://github.com/papandreou/node-pngquant/commit/f5bb2142dce599b3d0b272b932d367ce95dbbab1) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [+3 more](https://github.com/papandreou/node-pngquant/compare/v4.1.0...v4.2.0)
+
 ### v4.1.0 (2022-09-20)
 
 #### Pull requests
 
-- [#98](https://github.com/papandreou/node-pngquant/pull/98) esm ([ubermanu](mailto:manu@paca.happy-dev.fr))
+- [#98](https://github.com/papandreou/node-pngquant/pull/98) esm ([ubermanu](mailto:manu@paca.happy-dev.fr), [ubermanu](mailto:manu@paca.happy-dev.fr), [ubermanu](mailto:manu@paca.happy-dev.fr), [ubermanu](mailto:manu@paca.happy-dev.fr))
 - [#94](https://github.com/papandreou/node-pngquant/pull/94) Upgrade eslint-plugin-mocha to version 10.0.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
 - [#91](https://github.com/papandreou/node-pngquant/pull/91) Upgrade prettier to version 2.5.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
 - [#86](https://github.com/papandreou/node-pngquant/pull/86) Upgrade sinon to version 12.0.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
@@ -146,7 +162,7 @@
 
 ### v1.1.0 (2016-07-19)
 
-- [#10](https://github.com/papandreou/node-pngquant/pull/10) Added possibility to set binary path of pngquant manually ([Felix Schoeler](mailto:felix@hectobyte.net))
+- [#10](https://github.com/papandreou/node-pngquant/pull/10) Added possibility to set binary path of pngquant manually ([Felix Schoeler](mailto:felix@hectobyte.net), [Felix Schoeler](mailto:felix@hectobyte.net), [Felix Schoeler](mailto:felix@hectobyte.net), [Felix Schoeler](mailto:felix@hectobyte.net), [Felix Schoeler](mailto:felix@hectobyte.net))
 
 ### v1.0.0 (2016-03-31)
 
